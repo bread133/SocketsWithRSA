@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Admin" xmlns:viewmodel="clr-namespace:Admin.MVVM.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="AdminPanel" Height="450" Width="800">
     <Window.DataContext>
         <viewmodel:MainViewModel />
     </Window.DataContext>
