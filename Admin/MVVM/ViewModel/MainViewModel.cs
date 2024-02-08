@@ -12,7 +12,6 @@ namespace Admin.MVVM.ViewModel
     {
         public ObservableCollection<UserModel> Users { get; set; }
         public ObservableCollection<string> Messages { get; set; }
-
         public RelayCommand ConnectToServerCommand { get; set; }
         public RelayCommand SendMessageCommand { get; set; }
         public string Username { get; set; }
@@ -45,6 +44,7 @@ namespace Admin.MVVM.ViewModel
         {
             var message = server.PacketReader.ReadMessage();
             Application.Current.Dispatcher.Invoke(() => Messages.Add(message));
+
         }
 
         private void UserConnected()
@@ -59,6 +59,11 @@ namespace Admin.MVVM.ViewModel
             {
                 Application.Current.Dispatcher.Invoke(() => Users.Add(user));
             }
+        }
+
+        private void removeMessage()
+        {
+
         }
     }
 }

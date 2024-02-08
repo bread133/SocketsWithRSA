@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Client.Net
 {
@@ -25,20 +26,28 @@ namespace Client.Net
 
         public void ConnectToServer(string username)
         {
-            if(!tcpClient.Connected) 
+            try
             {
-                tcpClient.Connect("127.0.0.1", 7891);
-                packetReader = new(tcpClient.GetStream());
-
-                if (!string.IsNullOrEmpty(username))
+                if (!tcpClient.Connected)
                 {
-                    PacketBuilder connectPacket = new();
+                    tcpClient.Connect("127.0.0.1", 7891);
+                    packetReader = new(tcpClient.GetStream());
 
-                    connectPacket.WriteOpCode(0);
-                    connectPacket.WriteMessage(username);
-                    tcpClient.Client.Send(connectPacket.GetPacketBytes());
+                    if (!string.IsNullOrEmpty(username))
+                    {
+                        PacketBuilder connectPacket = new();
+
+                        connectPacket.WriteOpCode(0);
+                        connectPacket.WriteMessage(username);
+                        tcpClient.Client.Send(connectPacket.GetPacketBytes());
+                    }
+                    ReadPackets();
                 }
-                ReadPackets();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
         }
 

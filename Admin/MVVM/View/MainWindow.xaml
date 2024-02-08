@@ -17,11 +17,12 @@
 
         <DockPanel Grid.Column="0">
             <TextBlock Text="Пользователь: " DockPanel.Dock="Top"/>
-            <TextBox DockPanel.Dock="Top" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox DockPanel.Dock="Top" Text="{Binding Username, 
+                UpdateSourceTrigger=PropertyChanged}"/>
             <Button DockPanel.Dock="Top" Height="25"
-                    Content=" Подключиться " VerticalAlignment="Top"
-                    Margin="0, 10"
-                    Command="{Binding ConnectToServerCommand}"/>
+                    Content=" Запустить сервер " VerticalAlignment="Top"
+                    Margin="0, 10" Command="{Binding ConnectToServerCommand}"/>
+             
             <ListView ItemsSource="{Binding Users}">
                 <ListView.ItemTemplate>
                     <DataTemplate>

@@ -10,5 +10,6 @@ namespace Admin.MVVM.Model
     {
         public string Username { get; set; }
         public string UID { get; set; }
+        public string T { get; set; }
     }
 }
